@@ -47,10 +47,9 @@
 
     <div id="loginScreen" class="fixed inset-0 z-[5000] bg-slate-50 dark:bg-slate-900 flex flex-col items-center justify-center p-4 transition-opacity duration-500">
         <div class="w-full max-w-md">
-            
             <div class="text-center mb-6">
                 <div class="w-40 h-40 mx-auto mb-2 flex items-center justify-center rounded-3xl bg-white shadow-xl overflow-hidden p-2 border border-slate-100 dark:border-slate-800 dark:bg-slate-800">
-                   <img id="loginCustomLogo" src="icon-192.png" alt="App Logo" class="w-full h-full object-contain">
+                    <img id="loginCustomLogo" src="icon-512.png" alt="App Logo" class="w-full h-full object-contain">
                 </div>
             </div>
             
@@ -62,7 +61,16 @@
     <div id="appContainer" class="hidden flex h-full overflow-hidden relative">
         <aside id="mainSidebar" class="hidden lg:flex fixed lg:relative z-[9000] lg:z-10 inset-y-0 left-0 h-full flex-col w-72 bg-white border-r border-slate-200 dark:border-slate-800 p-6 overflow-y-auto no-scrollbar shadow-2xl lg:shadow-none transition-transform duration-300">
             <button onclick="toggleHbg()" class="lg:hidden absolute top-6 right-6 text-slate-400"><i data-lucide="x"></i></button>
-            <div class="flex items-center gap-3 mb-8 px-2"><div class="w-10 h-12 flex shrink-0"><svg viewBox="0 0 200 240" class="w-full h-full"><clipPath id="c2"><circle cx="100" cy="100" r="95"/></clipPath><g clip-path="url(#c2)"><rect width="200" height="200" fill="#11457b"/><path d="M 92 -10 L 105 -10 L 98 210 Z" fill="#ffffff"/><rect x="25" y="55" width="160" height="12" fill="#ffffff" transform="rotate(-1 100 50)"/><text x="100" y="145" font-family="Arial" font-size="82" font-weight="900" fill="#ffffff" text-anchor="middle">WIN</text></g></svg></div><div><span class="text-lg font-black text-[#11457b] dark:text-blue-400 block">WIN PORTAL</span><span id="sideChName" class="text-[9px] font-bold text-slate-400 uppercase tracking-widest block"></span></div></div>
+            
+            <div class="flex items-center gap-3 mb-8 px-2">
+                <div class="w-12 h-12 flex shrink-0 rounded-xl overflow-hidden bg-white border border-slate-200 dark:border-slate-700 p-1">
+                    <img id="sidebarCustomLogo" src="icon-512.png" alt="Logo" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <span class="text-lg font-black text-[#11457b] dark:text-blue-400 block">PORTAL</span>
+                </div>
+            </div>
+
             <nav class="flex-1 space-y-1">
                 <p class="text-[10px] font-bold text-slate-400 uppercase mb-2 px-2">Main Menu</p>
                 <button onclick="switchTab('dashboard')" class="d-nav w-full flex items-center gap-3 p-3 rounded-xl text-slate-500 font-bold nav-active" id="nav-dashboard"><i data-lucide="pie-chart" class="w-5 h-5"></i> Dashboard</button>
@@ -184,7 +192,7 @@
                 </div>
 
             </div>
-            <nav class="lg:hidden fixed bottom-0 w-full bg-white/95 dark:bg-slate-900/95 border-t dark:border-slate-800 flex justify-around p-3 z-[100] pb-safe"><button onclick="switchTab('dashboard')" class="m-nav flex flex-col items-center gap-1 text-slate-400 mob-active w-1/5" id="m-dashboard"><i data-lucide="pie-chart" class="w-6 h-6"></i></button><button onclick="switchTab('devotion')" class="m-nav flex flex-col items-center gap-1 text-slate-400 pt-2 w-1/5" id="m-devotion"><i data-lucide="book-open" class="w-6 h-6"></i></button><button onclick="switchTab('fun')" class="m-nav flex flex-col items-center gap-1 text-slate-400 pt-2 w-1/5" id="m-fun"><i data-lucide="gamepad-2" class="w-6 h-6"></i></button><button onclick="switchTab('members')" class="m-nav flex flex-col items-center gap-1 text-slate-400 pt-2 w-1/5" id="m-members"><i data-lucide="users" class="w-6 h-6"></i></button><button onclick="switchTab('attendance')" class="m-nav flex flex-col items-center gap-1 text-slate-400 pt-2 w-1/5 req-leader" id="m-attendance"><i data-lucide="calendar" class="w-6 h-6"></i></button></nav>
+            <nav class="lg:hidden fixed bottom-0 w-full bg-white/95 dark:bg-slate-900/95 border-t dark:border-slate-800 flex justify-around p-3 z-[100] pb-safe"><button onclick="switchTab('dashboard')" class="m-nav flex flex-col items-center gap-1 text-slate-400 mob-active w-1/5" id="m-dashboard"><i data-lucide="pie-chart" class="w-6 h-6"></i></button><button onclick="switchTab('devotion')" class="m-nav flex flex-col items-center gap-1 text-slate-400 pt-2 w-1/5" id="m-devotion"><i data-lucide="book-open" class="w-6 h-6"></i></button><button onclick="switchTab('fun')" class="m-nav flex flex-col items-center gap-1 text-slate-400 pt-2 w-1/5" id="m-fun"><i data-lucide="gamepad-2" class="w-6 h-6"></i></button><button onclick="switchTab('members')" class="m-nav flex flex-col items-center gap-1 text-slate-400 pt-2 w-1/5 req-leader" id="m-members"><i data-lucide="users" class="w-6 h-6"></i></button><button onclick="switchTab('attendance')" class="m-nav flex flex-col items-center gap-1 text-slate-400 pt-2 w-1/5 req-leader" id="m-attendance"><i data-lucide="calendar" class="w-6 h-6"></i></button></nav>
         </main>
     </div>
 
@@ -291,7 +299,8 @@
                     document.querySelectorAll('#nav-care').forEach(e => e.classList.add('hidden', 'hidden-by-rbac'));
                 } 
                 else if (f.r === 'member') {
-                    document.querySelectorAll('#nav-attendance, #nav-worship, #nav-evangelism, #nav-discipleship, #nav-care, #nav-reports, #nav-feedback').forEach(e => e.classList.add('hidden', 'hidden-by-rbac'));
+                    // UPDATE: Members now restricted from the Directory (#nav-members, #m-members)
+                    document.querySelectorAll('#nav-members, #m-members, #nav-attendance, #nav-worship, #nav-evangelism, #nav-discipleship, #nav-care, #nav-reports, #nav-feedback').forEach(e => e.classList.add('hidden', 'hidden-by-rbac'));
                 }
                 
                 document.getElementById('uName').innerText = f.u; 
